@@ -14,27 +14,28 @@ def get_most_frequent(text):
    
    for mark in punct2:
       text = text.replace(mark, ' ')
+   print(text)
+
    max = 0
    max_word = None
    words = text.split()
    for word in words:
-      tmp = word.count(text)
+      tmp = text.count(word)
       if tmp > max:
          max = tmp
-         max_word = word
+         max_word = word.title()
          
-   return {'word': maxword, 'freq': max}
+   return {'word': max_word, 'freq': max}
    
 
-
-@bp.route('/', methods=('GET', 'POST'))
-def frequency():
+@bp.route('/frequency', methods=('GET', 'POST'))
+def index():
    if request.method == 'POST':
-      title = request.form('title')
+      title = request.form['title']
       body = request.form['body']
       error = None
       
-      output = get_frequency(body)
+      output = get_most_frequent(body)
 
       return render_template('frequency/scored.html', title=title, output=output)
    

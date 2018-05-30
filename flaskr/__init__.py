@@ -30,11 +30,12 @@ def create_app(test_config=None):
    
    from . import blog
    app.register_blueprint(blog.bp)
-   app.add_url_rule('/', endpoint='index
+   app.add_url_rule('/', endpoint='index')
+   
+   from . import frequency
+   app.register_blueprint(frequency.bp)
+   app.add_url_rule('/frequency', endpoint='index')
    
    return app
 
-# a simple page that says hello
-@app.route('/hello')
-def hello():
-   return 'Hello, World!'
+app = create_app()
