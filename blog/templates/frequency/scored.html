@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block header %}
+   <h1>{% block title %}Word Frequency{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+   <h1>Most Frequent word in {{ title }}</h1>
+   <strong>{{ output['word'] }}: {{ output['freq'] }}</strong>
+{% endblock %}
